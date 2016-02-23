@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:lang="http://www.springframework.org/schema/lang"
+	xmlns:p="http://www.springframework.org/schema/p" 
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:context="http://www.springframework.org/schema/context" 
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/lang 
+						http://www.springframework.org/schema/lang/spring-lang-4.0.xsd
+						http://www.springframework.org/schema/beans 
+						http://www.springframework.org/schema/beans/spring-beans.xsd
+						http://www.springframework.org/schema/util 
+						http://www.springframework.org/schema/util/spring-util-4.0.xsd
+						http://www.springframework.org/schema/tx 
+						http://www.springframework.org/schema/tx/spring-tx.xsd
+						http://www.springframework.org/schema/context 
+						http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+	<context:annotation-config />
+	<tx:annotation-driven/>
+	<util:properties id="mProperties" location="unit-test-msgs.properties" />
+	
+	<context:property-placeholder location="classpath*:db.properties" />
+	<beans:import resource="classpath*:oua-db-config.xml" />
+	
+	<beans:bean id="createItemFromDAO" class="com.oua.tm.persistence.model.Item" p:description="Test From DAO" />
+	
+	<beans:bean id="logManager" class="java.util.logging.LogManager" factory-method="getLogManager"/>
+
+	<beans:bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+		<beans:property name="targetObject">
+			<beans:ref bean ="logManager" />
+		</beans:property>
+		<beans:property name="targetMethod">
+			<beans:value>readConfiguration</beans:value>
+		</beans:property>
+		<beans:property name="arguments">
+			<beans:list>
+				<beans:value type="java.io.InputStream">classpath:oua-logging.properties</beans:value>
+			</beans:list>
+		</beans:property>
+	</beans:bean>	
+</beans:beans>

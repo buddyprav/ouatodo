@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+						http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+						http://www.springframework.org/schema/context 
+						http://www.springframework.org/schema/context/spring-context-4.0.xsd
+           				http://www.springframework.org/schema/mvc 
+           				http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
+
+	<context:annotation-config />
+
+	<context:component-scan base-package="com.oua.common" />
+	<context:component-scan base-package="com.oua.controller" />
+
+	<mvc:annotation-driven />
+	<context:property-placeholder location="classpath:application.properties"/>
+	
+	<beans:import resource="oua-webmvc-config.xml" />
+	<beans:import resource="classpath:oua-service-config.xml" />
+	<beans:import resource="classpath:oua-common-config.xml" />
+	<beans:import resource="classpath:oua-db-config.xml" />
+	<beans:import resource="classpath*:template-service-config.xml" />
+
+	<beans:bean id="logManager" class="java.util.logging.LogManager"
+		factory-method="getLogManager">
+	</beans:bean>
+
+	<beans:bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+		<beans:property name="targetObject">
+			<beans:ref bean="logManager" />
+		</beans:property>
+		<beans:property name="targetMethod">
+			<beans:value>readConfiguration</beans:value>
+		</beans:property>
+		<beans:property name="arguments">
+			<beans:list>
+				<beans:value type="java.io.InputStream">classpath:tm-logging.properties</beans:value>
+			</beans:list>
+		</beans:property>
+	</beans:bean>
+	<beans:bean id="controllerNameHandlerMapping"  class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping" />    
+	<beans:bean id="xmlViewResolver" class="org.springframework.web.servlet.view.XmlViewResolver">
+	   <beans:property name="location">
+		   <beans:value>/WEB-INF/config/oua-webmvc-config.xml</beans:value>
+	   </beans:property>
+	   <beans:property name="order" value="0" />
+	</beans:bean>
+</beans:beans>

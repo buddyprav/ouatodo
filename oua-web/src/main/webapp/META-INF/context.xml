@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+
+    <!-- Default set of monitored resources -->
+    <WatchedResource>WEB-INF/web.xml</WatchedResource>
+    
+	<!-- Do not change the DB resource name. Not Yet Working from here... Need to change-->
+	<Resource name="jdbc/OUADataSource"
+	         auth="Container"
+	         type="javax.sql.DataSource"
+	         driverClassName="com.mysql.jdbc.Driver"
+	         url="jdbc:mysql://localhost:3306/OUA"
+	         username="root"
+	         password="System@123"
+	         removeAbandoned="true"
+	         removeAbandonedTimeout="90"
+	         logAbandoned="true"
+	         maxActive="20"
+	         maxIdle="10"
+	         maxWait="-1"/>
+</Context>

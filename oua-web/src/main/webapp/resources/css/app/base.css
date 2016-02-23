@@ -1,0 +1,141 @@
+/*This is the css used to write the custom css and overwrite the class of any third party CSS*/
+
+body{
+	font-family:Tahoma;
+	font-size: 12px;
+	padding-top: 50px;
+}
+
+.navbar-inverse .navbar-nav > li > a{
+	color: #FFF;
+	font-weight:bold;
+}
+
+.navbar-inverse .navbar-brand{
+	background: none repeat scroll 0 0 blue;
+	color: #FFF;
+}
+
+.nav-pills > li > a {
+    border-radius: 0;
+}
+
+/*.nav > li > a {
+    padding: 5px;
+}*/
+
+.navbar-inverse {
+    background-color: #2f77b1;
+}
+
+.col-sm-2{
+	padding-left: 5px;
+    padding-right: 5px;
+}
+
+/* Remove the navbar's default margin-bottom and rounded borders */ 
+ .navbar {
+   margin-bottom: 0;
+   border-radius: 0;
+ }
+  
+ /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+ .row.content {height: 610px;}
+  
+ /* Set gray background color and 100% height */
+ .sidenav {
+	background-color: #f1f1f1;
+ 	height: 100%;
+ 	padding-top: 10px;
+ }
+  
+ .nav-sidebar {
+  margin-bottom: 20px;
+  margin-left: -20px;
+}
+.sidebar {
+  display: none;
+}
+ .list-group-item {
+    margin-top: 5px;
+}
+
+.list-group-item:first-child {
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+}
+
+.list-group-item:last-child{
+	border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+ /* Set black background color, white text and some padding */
+ footer {
+   background-color: #555;
+   color: white;
+   height:30px;
+   padding: 5px;
+ }
+ 
+ /* On small screens, set height to 'auto' for sidenav and grid */
+ @media screen and (min-width: 600px) {
+   .sidebar  {
+     /*height: auto;
+     padding: 15px;*/
+     
+	position: fixed;
+	top: 51px;
+	bottom: 0;
+	left: 0;
+	z-index: 1000;
+	display: block;
+	padding: 20px;
+	overflow-x: hidden;
+	overflow-y: auto;
+	background-color: #f5f5f5;
+	border-right: 1px solid #eee;
+   }
+   .row.content {} 
+ } 
+
+.nav-sidebar > .active > a, .nav-sidebar > .active > a:hover, .nav-sidebar > .active > a:focus {
+  color: #fff;
+  background-color: #428bca;
+}
+
+.checkbox input,
+.radio input {
+    top: 8px;
+}
+
+.radio label{
+	padding-left: 23px;
+	
+}
+
+.main .page-header {
+   background: none repeat scroll 0 0 #eeeeee;
+   margin-bottom: 10px;
+   margin-top: 0;
+   padding-left: 5px;
+   padding-top: 9px;
+}
+
+.hide {
+    display: none;
+}
+
+.modal-title {
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.modal-dialog {
+    max-width: 370px;
+}
+
+.modal-header,
+.modal-footer{
+	 padding: 10px;
+}
